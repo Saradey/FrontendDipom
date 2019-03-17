@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Ветераны</string>
+
+    <string name="input_login_str">Введите логин</string>
+    <string name="input_password_str">Введите пароль</string>
+    <string name="enter_str">Войти</string>
+    <string name="registration_str">Зарегистрироваться</string>
+
+</resources>
