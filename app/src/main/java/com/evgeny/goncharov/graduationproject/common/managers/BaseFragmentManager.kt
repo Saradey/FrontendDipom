@@ -1,20 +1,18 @@
 package com.evgeny.goncharov.graduationproject.common.managers
 
 import android.support.annotation.IdRes
+import android.support.v4.app.Fragment
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
-import com.evgeny.goncharov.graduationproject.ui.fragment.BaseFlowFragment
-import javax.inject.Inject
+import com.evgeny.goncharov.graduationproject.ui.fragment.flow.BaseFlowFragment
 
-abstract class BaseFragmentManager (val mainActivity: MainActivity){
-
-    lateinit var baseFlowFragment : BaseFlowFragment
+abstract class BaseFragmentManager (private val mainActivity: MainActivity){
 
 
-    fun setFragmentFlow(fragment : BaseFlowFragment, @IdRes id : Int){
-        this.baseFlowFragment = fragment
+    fun setFragment(fragment : Fragment, @IdRes id : Int){
         mainActivity.supportFragmentManager.beginTransaction()
                 .replace(id, fragment)
                 .commit()
     }
+
 
 }

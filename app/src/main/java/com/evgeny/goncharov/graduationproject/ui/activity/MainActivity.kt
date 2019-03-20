@@ -2,25 +2,33 @@ package com.evgeny.goncharov.graduationproject.ui.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.evgeny.goncharov.graduationproject.R
 import com.evgeny.goncharov.graduationproject.common.managers.FlowFragmentManager
 import com.evgeny.goncharov.graduationproject.consts.START_FRAGMENT_AUTHORIZATION
 import com.evgeny.goncharov.graduationproject.di.component.AppComponent
 import com.evgeny.goncharov.graduationproject.di.component.DaggerAppComponent
-import com.evgeny.goncharov.graduationproject.ui.fragment.EntryFlowFragment
+import com.evgeny.goncharov.graduationproject.mvp.contract.MainActivityContract
+import com.evgeny.goncharov.graduationproject.mvp.presenter.MainPresenter
+import com.evgeny.goncharov.graduationproject.ui.fragment.flow.EntryFlowFragment
 import javax.inject.Inject
+import android.widget.Toast
 
-class MainActivity : AppCompatActivity(), Router {
+
+
+class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView {
 
 
     companion object{
         lateinit var appComponent: AppComponent
     }
 
-
     @Inject
     lateinit var flowFragmentManager: FlowFragmentManager
+
+    lateinit var presenter : MainActivityContract.MainPresenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,12 +41,10 @@ class MainActivity : AppCompatActivity(), Router {
                 .activity(this)
                 .build()
 
-
         appComponent.inject(this)
 
-        setTitle("")
-
         firstLaunch()
+        initPresenter()
     }
 
 
@@ -56,6 +62,13 @@ class MainActivity : AppCompatActivity(), Router {
     }
 
 
+
+    private fun initPresenter() {
+        presenter = MainPresenter(this)
+    }
+
+
+
     override fun onBackPressed() {
 
     }
@@ -64,9 +77,20 @@ class MainActivity : AppCompatActivity(), Router {
 
     override fun startOnScreen(key: Int) {
         when(key){
-            START_FRAGMENT_AUTHORIZATION -> flowFragmentManager.setFragmentFlow(EntryFlowFragment(), R.id.fill)
+            START_FRAGMENT_AUTHORIZATION -> flowFragmentManager.setFragment(EntryFlowFragment(), R.id.fill)
         }
     }
 
+
+    override fun onStop() {
+        super.onStop()
+        presenter.logout()
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        presenter.goToTheAuthentication()
+    }
 
 }

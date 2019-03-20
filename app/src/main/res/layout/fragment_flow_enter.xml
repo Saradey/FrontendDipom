@@ -6,6 +6,7 @@
 
 
     <FrameLayout
+        android:id="@+id/fill_enter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

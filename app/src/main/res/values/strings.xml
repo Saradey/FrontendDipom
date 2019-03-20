@@ -21,5 +21,6 @@
 
     <string name="puslish_article_str">Рассказать историю</string>
     <string name="title_auto">Авторизация</string>
+    <string name="error_input_show_str">Введите 3 символа</string>
 
 </resources>

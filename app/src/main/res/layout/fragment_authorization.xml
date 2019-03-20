@@ -32,7 +32,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_image"
         app:counterMaxLength="15"
-        app:counterEnabled="true">
+        app:counterEnabled="true"
+        app:errorEnabled="true">
 
         <EditText
             android:id="@+id/input_login"
@@ -82,19 +83,21 @@
         app:layout_constraintTop_toBottomOf="@+id/layout_input_password" />
 
 
-    <TextView
-        android:id="@+id/registration_text"
+    <Button
+        android:id="@+id/button_registration"
+        style="@style/ButtonTheme"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:text="@string/registration_str"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_button" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>
