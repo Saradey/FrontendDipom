@@ -4,4 +4,6 @@ interface Router{
 
     fun startOnScreen(key : Int)
 
+    fun exit()
+
 }

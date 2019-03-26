@@ -10,7 +10,7 @@
     <string name="reg_pas">Введите пароль</string>
     <string name="reg_email">Введите емаил</string>
     <string name="reg_click_button">Зарегистрироваться</string>
-    <string name="reg_pas_again">Повторить пароль</string>
+    <string name="reg_pas_again">Повторите пароль</string>
     <string name="input_name_str">Введите название истории</string>
     <string name="input_article_str">Расскажите свою историю</string>
 
@@ -22,5 +22,19 @@
     <string name="puslish_article_str">Рассказать историю</string>
     <string name="title_auto">Авторизация</string>
     <string name="error_input_show_str">Введите 3 символа</string>
+    <string name="fragment_reg_str">Регистрация</string>
+
+    <string name="ask_exit_title_str">Выход</string>
+    <string name="ask_exit_yes">Да</string>
+    <string name="ask_exit_no">Нет</string>
+    <string name="ask_exit_str">Вы точно хотите выйти?</string>
+    <string name="reg_ok_str">Вы зарегистрированы</string>
+    <string name="reg_error_str">Ошибка регистрации</string>
+    <string name="auto_error_str">Ошибка авторизации</string>
+    <string name="menu_more_str">More</string>
+    <string name="create_article_str">Опубликовать статью</string>
+    <string name="show_article_my_str">Посмотреть свои статьи</string>
+    <string name="search_class_str">Искать статьи по классификации</string>
+    <string name="exit_str">Выйти из аккаунта</string>
 
 </resources>

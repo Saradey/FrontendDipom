@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/item_more_wall"
+          android:title="@string/menu_more_str"
+          android:orderInCategory="1"
+          app:showAsAction="ifRoom"
+          android:icon="@drawable/ic_more">
+
+        <menu>
+            <item android:id="@+id/add_article_button"
+                  android:title="@string/create_article_str"/>
+            <item android:id="@+id/show_article_user"
+                  android:title="@string/show_article_my_str"/>
+            <item android:id="@+id/show_article_class"
+                  android:title="@string/search_class_str"/>
+            <item android:id="@+id/exit"
+                  android:title="@string/exit_str"/>
+        </menu>
+
+
+    </item>
+
+</menu>

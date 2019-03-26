@@ -9,3 +9,5 @@ const val API_LOGIN = "login"
 const val API_PASSWORD = "password"
 
 const val API_TOKEN = "token"
+
+const val API_MAIL = "mail"

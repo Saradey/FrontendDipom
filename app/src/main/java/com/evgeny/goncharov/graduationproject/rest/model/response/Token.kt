@@ -1,4 +1,4 @@
-package com.evgeny.goncharov.graduationproject.model.model
+package com.evgeny.goncharov.graduationproject.rest.model.response
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,11 +1,16 @@
 package com.evgeny.goncharov.graduationproject.ui.fragment
 
 import android.os.Bundle
+import android.support.annotation.StringRes
+import android.support.annotation.UiThread
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import com.evgeny.goncharov.graduationproject.mvp.contract.AuthorizationContract
 import com.evgeny.goncharov.graduationproject.R
+import com.evgeny.goncharov.graduationproject.consts.START_FRAGMENT_AUTHORIZATION
+import com.evgeny.goncharov.graduationproject.consts.START_FRAGMENT_REGISTRATION
 import com.evgeny.goncharov.graduationproject.mvp.presenter.AuthorizationPresenter
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.contract.EntryFlowContract
 import kotlinx.android.synthetic.main.fragment_authorization.*
@@ -15,40 +20,6 @@ class AuthorizationFragment : BaseFragment(), AuthorizationContract.Authorizatio
     lateinit var entryFlowContract: EntryFlowContract
 
     lateinit var presenter: AuthorizationContract.AuthorizationPresenter
-
-    private var textWatcherInputLogin : TextWatcher = object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
-
-        }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-        }
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            if (s!!.length < 3) {
-                layout_input_login.error = getString(R.string.error_input_show_str)
-            } else layout_input_login.error = ""
-        }
-    }
-
-
-
-    private var textWatcherInputPassword : TextWatcher = object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
-
-        }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-        }
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            if (s!!.length < 3) {
-                layout_input_password.error = getString(R.string.error_input_show_str)
-            } else layout_input_password.error = ""
-        }
-    }
 
 
     companion object {
@@ -85,12 +56,9 @@ class AuthorizationFragment : BaseFragment(), AuthorizationContract.Authorizatio
 
 
         button_registration.setOnClickListener {
-
+            entryFlowContract.startOnScreen(START_FRAGMENT_REGISTRATION)
         }
 
-
-        input_login.addTextChangedListener(textWatcherInputLogin)
-        input_password.addTextChangedListener(textWatcherInputPassword)
     }
 
 
@@ -106,6 +74,22 @@ class AuthorizationFragment : BaseFragment(), AuthorizationContract.Authorizatio
 
     override fun getTitle(): Int {
         return R.string.title_auto
+    }
+
+
+    override fun error() {
+        makeToast(R.string.auto_error_str)
+    }
+
+
+    override fun authenticationDone() {
+        entryFlowContract.authenticationDone()
+    }
+
+
+    private fun makeToast(@StringRes idString : Int){
+        val toastOk = Toast.makeText(requireActivity(), idString, Toast.LENGTH_LONG)
+        toastOk.show()
     }
 
 

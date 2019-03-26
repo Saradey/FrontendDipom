@@ -19,5 +19,4 @@ class ModuleRest {
     fun provideUserApi(restClient: RestClient) : UserApi
             = restClient.createService(UserApi::class.java)
 
-
 }

@@ -8,6 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.contract.BaseFlowContract
+import android.widget.Toast
+import android.app.Activity
+import android.util.Log
+
 
 open abstract class BaseFragment : Fragment(){
 

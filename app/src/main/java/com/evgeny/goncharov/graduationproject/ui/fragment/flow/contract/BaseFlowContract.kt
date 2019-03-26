@@ -4,4 +4,6 @@ interface BaseFlowContract {
 
     fun setTitle(title: Int)
 
+    fun startOnScreen(key: Int)
+
 }

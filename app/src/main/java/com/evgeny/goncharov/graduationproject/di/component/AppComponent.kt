@@ -6,9 +6,11 @@ import com.evgeny.goncharov.graduationproject.di.module.ModuleManagersProvides
 import com.evgeny.goncharov.graduationproject.di.module.ModuleRest
 import com.evgeny.goncharov.graduationproject.mvp.presenter.AuthorizationPresenter
 import com.evgeny.goncharov.graduationproject.mvp.presenter.MainPresenter
+import com.evgeny.goncharov.graduationproject.mvp.presenter.RegistrationPresenter
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
 import com.evgeny.goncharov.graduationproject.ui.activity.Router
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.EntryFlowFragment
+import com.evgeny.goncharov.graduationproject.ui.fragment.flow.WallFlowFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -27,13 +29,18 @@ interface AppComponent{
     //fragment
     fun inject(entryFlowFragment: EntryFlowFragment)
 
+    fun inject(wallFlowFragment: WallFlowFragment)
+
     //holder
 
 
     //presenter
-    fun inject(authorizationPresenter : AuthorizationPresenter)
+    fun inject(presenter : AuthorizationPresenter)
 
-    fun inject(mainPresenter: MainPresenter)
+    fun inject(presenter: MainPresenter)
+
+    fun inject(presenter : RegistrationPresenter)
+
 
     @Component.Builder
     interface Builder{

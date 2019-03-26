@@ -6,6 +6,13 @@ class CurrentUser{
         var token = ""
         var login = ""
         var password = ""
+
+        fun logout(){
+            token = ""
+            login = ""
+            password = ""
+        }
+
     }
 
 

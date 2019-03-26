@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import com.evgeny.goncharov.graduationproject.common.managers.ErrorManager
 import com.evgeny.goncharov.graduationproject.common.managers.NetworkManager
 import com.evgeny.goncharov.graduationproject.common.utils.CurrentUser
-import com.evgeny.goncharov.graduationproject.model.model.Token
+import com.evgeny.goncharov.graduationproject.rest.model.response.Token
 import com.evgeny.goncharov.graduationproject.mvp.contract.MainActivityContract
 import com.evgeny.goncharov.graduationproject.rest.api.UserApi
 import com.evgeny.goncharov.graduationproject.rest.model.request.LogoutUserRequest
@@ -35,7 +35,7 @@ class MainPresenter(val view: MainActivityContract.MainView) : MainActivityContr
                     .flatMap {
                         when (it) {
                             true -> authenticationRequest(CurrentUser.login, CurrentUser.password)
-                            false -> throw Throwable(ErrorManager.NO_INTERNET)
+                            false -> throw Throwable(ErrorManager.CONNECT_FIELD)
                         }
                     }.subscribeOn(Schedulers.io())
                     .subscribe({
@@ -57,6 +57,7 @@ class MainPresenter(val view: MainActivityContract.MainView) : MainActivityContr
             userApi.logout(LogoutUserRequest().toRequest())
                     .subscribeOn(Schedulers.io())
                     .subscribe { }
+        CurrentUser.logout()
     }
 
 

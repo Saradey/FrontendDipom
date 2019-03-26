@@ -13,6 +13,10 @@ interface AuthorizationContract {
 
     interface  AuthorizationView : BaseView {
 
+        fun error()
+
+        fun authenticationDone()
+
     }
 
 

@@ -2,20 +2,18 @@ package com.evgeny.goncharov.graduationproject.ui.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import com.evgeny.goncharov.graduationproject.R
-import com.evgeny.goncharov.graduationproject.common.managers.FlowFragmentManager
-import com.evgeny.goncharov.graduationproject.consts.START_FRAGMENT_AUTHORIZATION
+import com.evgeny.goncharov.graduationproject.common.managers.fragment.ActivityFragmentManager
+import com.evgeny.goncharov.graduationproject.consts.START_FRAGMENT_ENTRY
+import com.evgeny.goncharov.graduationproject.consts.START_FRAGMENT_WALL
 import com.evgeny.goncharov.graduationproject.di.component.AppComponent
 import com.evgeny.goncharov.graduationproject.di.component.DaggerAppComponent
 import com.evgeny.goncharov.graduationproject.mvp.contract.MainActivityContract
 import com.evgeny.goncharov.graduationproject.mvp.presenter.MainPresenter
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.EntryFlowFragment
+import com.evgeny.goncharov.graduationproject.ui.fragment.flow.WallFlowFragment
 import javax.inject.Inject
-import android.widget.Toast
-
 
 
 class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView {
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView 
     }
 
     @Inject
-    lateinit var flowFragmentManager: FlowFragmentManager
+    lateinit var flowFragmentManager: ActivityFragmentManager
 
     lateinit var presenter : MainActivityContract.MainPresenter
 
@@ -58,7 +56,7 @@ class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView 
             sharedPreferences.edit().putBoolean("firstRun", false).apply()
         }
 
-        startOnScreen(START_FRAGMENT_AUTHORIZATION)
+        startOnScreen(START_FRAGMENT_ENTRY)
     }
 
 
@@ -70,15 +68,21 @@ class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView 
 
 
     override fun onBackPressed() {
-
+        flowFragmentManager.onBackPressed()
     }
 
 
 
     override fun startOnScreen(key: Int) {
         when(key){
-            START_FRAGMENT_AUTHORIZATION -> flowFragmentManager.setFragment(EntryFlowFragment(), R.id.fill)
+            START_FRAGMENT_ENTRY -> flowFragmentManager.setFlowFragment(EntryFlowFragment(), R.id.fill)
+            START_FRAGMENT_WALL -> flowFragmentManager.setFlowFragment(WallFlowFragment() ,R.id.fill)
         }
+    }
+
+
+    override fun exit() {
+        //TODO сделать переход на экран авторизации
     }
 
 
@@ -92,5 +96,6 @@ class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView 
         super.onResume()
         presenter.goToTheAuthentication()
     }
+
 
 }
