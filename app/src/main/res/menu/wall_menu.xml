@@ -19,7 +19,6 @@
                   android:title="@string/exit_str"/>
         </menu>
 
-
     </item>
 
 </menu>

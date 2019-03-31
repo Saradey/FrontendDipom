@@ -13,3 +13,7 @@ const val API_TOKEN = "token"
 const val API_MAIL = "mail"
 
 const val API_OFFSET = "offset"
+
+const val API_TEXT_ARTICLE = "text"
+
+const val API_NAME_ARTICLE = "name"

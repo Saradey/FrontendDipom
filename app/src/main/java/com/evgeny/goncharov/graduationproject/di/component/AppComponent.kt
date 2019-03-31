@@ -4,12 +4,11 @@ import android.content.Context
 import com.evgeny.goncharov.graduationproject.di.module.ModuleActivityProvide
 import com.evgeny.goncharov.graduationproject.di.module.ModuleManagersProvides
 import com.evgeny.goncharov.graduationproject.di.module.ModuleRest
-import com.evgeny.goncharov.graduationproject.mvp.presenter.AuthorizationPresenter
-import com.evgeny.goncharov.graduationproject.mvp.presenter.MainPresenter
-import com.evgeny.goncharov.graduationproject.mvp.presenter.RegistrationPresenter
-import com.evgeny.goncharov.graduationproject.mvp.presenter.WallAllPresenter
+import com.evgeny.goncharov.graduationproject.mvp.presenter.*
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
 import com.evgeny.goncharov.graduationproject.ui.activity.Router
+import com.evgeny.goncharov.graduationproject.ui.dialog.AskLogoutDialog
+import com.evgeny.goncharov.graduationproject.ui.fragment.flow.CreateArticleFlowFragment
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.EntryFlowFragment
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.WallFlowFragment
 import dagger.BindsInstance
@@ -32,7 +31,11 @@ interface AppComponent{
 
     fun inject(wallFlowFragment: WallFlowFragment)
 
-    //holder
+    fun inject(createArticleFlowFragment: CreateArticleFlowFragment)
+
+    //dialog
+
+    fun inject(dialog : AskLogoutDialog)
 
 
     //presenter
@@ -43,6 +46,8 @@ interface AppComponent{
     fun inject(presenter : RegistrationPresenter)
 
     fun inject(presenter : WallAllPresenter)
+
+    fun inject(presenter : CreateArticlePresenter)
 
 
     @Component.Builder

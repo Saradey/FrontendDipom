@@ -22,7 +22,7 @@ import javax.inject.Inject
  */
 
 
-class WallAllPresenter(val view: WallAllContract.WallAllView) : BaseWallPresenter(), WallAllContract.WallAllPresenter {
+class WallAllPresenter(val view: WallAllContract.WallAllView) : WallAllContract.WallAllPresenter {
 
     @Inject
     lateinit var networkManager: NetworkManager

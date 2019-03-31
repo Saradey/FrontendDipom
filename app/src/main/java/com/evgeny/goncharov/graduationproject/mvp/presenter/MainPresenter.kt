@@ -57,8 +57,8 @@ class MainPresenter(val view: MainActivityContract.MainView) : MainActivityContr
             userApi.logout(LogoutUserRequest().toRequest())
                     .subscribeOn(Schedulers.io())
                     .subscribe { }
-        CurrentUser.logout()
     }
+
 
 
 }

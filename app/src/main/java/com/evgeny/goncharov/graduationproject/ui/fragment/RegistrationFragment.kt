@@ -60,7 +60,8 @@ class RegistrationFragment : BaseFragment(), RegistrationContract.RegistrationVi
             if (passwordAndPassword() &&
                 regexCheckEmail(email) &&
                 pas.length > 2 &&
-                log.length > 2)
+                log.length > 2
+            )
                 presenter.requestRegistration(log, pas, email)
         }
     }
@@ -87,7 +88,7 @@ class RegistrationFragment : BaseFragment(), RegistrationContract.RegistrationVi
     }
 
 
-    private fun makeToast(@StringRes idString : Int){
+    private fun makeToast(@StringRes idString: Int) {
         val toastOk = Toast.makeText(requireActivity(), idString, Toast.LENGTH_LONG)
         toastOk.show()
     }

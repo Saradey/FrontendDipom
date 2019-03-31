@@ -38,5 +38,10 @@
     <string name="search_class_str">Искать статьи по классификации</string>
     <string name="exit_str">Выйти из аккаунта</string>
     <string name="title_wall_str">Свежие публикации</string>
+    <string name="title_create_article_str">Создание статьи</string>
+    <string name="success_str">Ваша история опубликована</string>
+    <string name="filed_str">Ошибка публикации</string>
+    <string name="logout_title_str">Разлогинится</string>
+    <string name="logout_text_str">Вы точно хотите выйти из аккаунта?</string>
 
 </resources>

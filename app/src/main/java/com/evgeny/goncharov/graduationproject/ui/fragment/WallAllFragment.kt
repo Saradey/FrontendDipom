@@ -23,7 +23,7 @@ class WallAllFragment : BaseFragment(), WallAllContract.WallAllView {
 
     lateinit var presenter: WallAllContract.WallAllPresenter
 
-    lateinit var adapter: WallAdapter
+    private lateinit var adapter: WallAdapter
 
     @Inject
     lateinit var router: Router

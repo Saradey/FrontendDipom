@@ -5,9 +5,11 @@ import android.view.*
 import com.evgeny.goncharov.graduationproject.R
 import com.evgeny.goncharov.graduationproject.common.managers.fragment.FlowFragmentManager
 import com.evgeny.goncharov.graduationproject.common.managers.fragment.WallFragmentManager
+import com.evgeny.goncharov.graduationproject.consts.START_FRAGMENT_CREATE
 import com.evgeny.goncharov.graduationproject.consts.START_WALL_ALL_FRAGMENT
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
 import com.evgeny.goncharov.graduationproject.ui.activity.Router
+import com.evgeny.goncharov.graduationproject.ui.dialog.AskLogoutDialog
 import com.evgeny.goncharov.graduationproject.ui.fragment.WallAllFragment
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.contract.WallFlowContract
 import javax.inject.Inject
@@ -44,7 +46,7 @@ class WallFlowFragment : BaseFlowFragment(), WallFlowContract {
         val id = item!!.itemId
         when (id) {
             R.id.add_article_button -> {
-
+                router.startOnScreen(START_FRAGMENT_CREATE)
                 return true
             }
             R.id.show_article_user -> {
@@ -70,11 +72,9 @@ class WallFlowFragment : BaseFlowFragment(), WallFlowContract {
 
 
     override fun startOnScreen(key: Int) {
-
         when (key) {
             START_WALL_ALL_FRAGMENT -> initWallALlFragment()
         }
-
     }
 
 
@@ -89,8 +89,13 @@ class WallFlowFragment : BaseFlowFragment(), WallFlowContract {
 
 
     override fun onBackPressed() {
-
+        initDialogLogout()
     }
 
+
+    private fun initDialogLogout() {
+        val dialog = AskLogoutDialog()
+        dialog.show(requireActivity().supportFragmentManager, dialog.javaClass.name)
+    }
 
 }
