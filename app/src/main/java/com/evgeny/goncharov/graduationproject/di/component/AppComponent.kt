@@ -7,6 +7,7 @@ import com.evgeny.goncharov.graduationproject.di.module.ModuleRest
 import com.evgeny.goncharov.graduationproject.mvp.presenter.AuthorizationPresenter
 import com.evgeny.goncharov.graduationproject.mvp.presenter.MainPresenter
 import com.evgeny.goncharov.graduationproject.mvp.presenter.RegistrationPresenter
+import com.evgeny.goncharov.graduationproject.mvp.presenter.WallAllPresenter
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
 import com.evgeny.goncharov.graduationproject.ui.activity.Router
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.EntryFlowFragment
@@ -40,6 +41,8 @@ interface AppComponent{
     fun inject(presenter: MainPresenter)
 
     fun inject(presenter : RegistrationPresenter)
+
+    fun inject(presenter : WallAllPresenter)
 
 
     @Component.Builder

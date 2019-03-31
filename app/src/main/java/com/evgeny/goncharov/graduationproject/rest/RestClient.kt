@@ -12,34 +12,33 @@ import java.util.concurrent.TimeUnit
 
 class RestClient {
 
-    private val retrofit: Retrofit = Retrofit.Builder()
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .client(getClientMonitorHTTPBody())
-            .build()
+    val retrofit: Retrofit = Retrofit.Builder()
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(BASE_URL)
+        .client(getClientMonitorHTTPBody())
+        .build()
 
 
     private fun getClientMonitorHTTPBody(): OkHttpClient {
         val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor(
-                HttpLoggingInterceptor.Logger
-                { message ->
-                    Log.d(LOG_REST_MANAGER, message)
-                })
+            HttpLoggingInterceptor.Logger
+            { message ->
+                Log.d(LOG_REST_MANAGER, message)
+            })
 
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 
         return OkHttpClient.Builder()
-                .connectTimeout(2500, TimeUnit.MILLISECONDS)
-                .readTimeout(2500, TimeUnit.MILLISECONDS)
-                .addInterceptor(interceptor)
-                .build()
+            .connectTimeout(2500, TimeUnit.MILLISECONDS)
+            .readTimeout(2500, TimeUnit.MILLISECONDS)
+            .addInterceptor(interceptor)
+            .build()
     }
 
 
-
-    fun <T : Any> createService(java: Class<T>): T {
-        return retrofit.create(java)
+    inline fun <reified T> createService(): T {
+        return retrofit.create(T::class.java)
     }
 
 }

@@ -12,7 +12,6 @@ const val USER_REGISTRATION = "user/registration"
 
 
 //article
-
 const val ARTICLE_CREATE = "article/create"
 
 const val ARTICLE_DELETE = "article/delete"

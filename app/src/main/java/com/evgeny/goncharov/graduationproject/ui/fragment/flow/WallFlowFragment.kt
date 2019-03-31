@@ -8,13 +8,14 @@ import com.evgeny.goncharov.graduationproject.common.managers.fragment.WallFragm
 import com.evgeny.goncharov.graduationproject.consts.START_WALL_ALL_FRAGMENT
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
 import com.evgeny.goncharov.graduationproject.ui.activity.Router
+import com.evgeny.goncharov.graduationproject.ui.fragment.WallAllFragment
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.contract.WallFlowContract
 import javax.inject.Inject
 
 class WallFlowFragment : BaseFlowFragment(), WallFlowContract {
 
     @Inject
-    lateinit var router : Router
+    lateinit var router: Router
 
     lateinit var wallFragmentManager: WallFragmentManager
 
@@ -41,7 +42,7 @@ class WallFlowFragment : BaseFlowFragment(), WallFlowContract {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item!!.itemId
-        when(id){
+        when (id) {
             R.id.add_article_button -> {
 
                 return true
@@ -54,7 +55,7 @@ class WallFlowFragment : BaseFlowFragment(), WallFlowContract {
 
                 return true
             }
-            R.id.exit ->{
+            R.id.exit -> {
                 router.exit()
                 return true
             }
@@ -70,23 +71,21 @@ class WallFlowFragment : BaseFlowFragment(), WallFlowContract {
 
     override fun startOnScreen(key: Int) {
 
-        when(key){
+        when (key) {
             START_WALL_ALL_FRAGMENT -> initWallALlFragment()
         }
 
     }
 
 
-
     private fun initWallALlFragment() {
-
+        wallFragmentManager.addBaseFragment(WallAllFragment.getInstance(this), R.id.fill_enter)
     }
 
 
     override fun getLayoutContentView(): Int {
         return R.layout.fragment_flow
     }
-
 
 
     override fun onBackPressed() {
