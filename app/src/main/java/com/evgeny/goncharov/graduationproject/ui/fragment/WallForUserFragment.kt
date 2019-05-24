@@ -1,17 +1,13 @@
 package com.evgeny.goncharov.graduationproject.ui.fragment
 
 import android.arch.paging.PagedList
-import android.support.v7.widget.LinearLayoutManager
 import com.evgeny.goncharov.graduationproject.R
 import com.evgeny.goncharov.graduationproject.common.MainThreadExecutor
 import com.evgeny.goncharov.graduationproject.model.view.ArticleView
-import com.evgeny.goncharov.graduationproject.mvp.contract.WallAllContract
-import com.evgeny.goncharov.graduationproject.mvp.presenter.WallAllPresenter
-import com.evgeny.goncharov.graduationproject.ui.adapters.WallAdapter
-import com.evgeny.goncharov.graduationproject.ui.adapters.source.PositionalDataSourceWallAll
-import com.evgeny.goncharov.graduationproject.ui.adapters.utils.DiffUtilCallback
+import com.evgeny.goncharov.graduationproject.mvp.contract.WallUserContract
+import com.evgeny.goncharov.graduationproject.mvp.presenter.WallUserPresenter
+import com.evgeny.goncharov.graduationproject.ui.adapters.source.PositionalDataSourceWallUser
 import com.evgeny.goncharov.graduationproject.ui.fragment.flow.contract.WallFlowContract
-import kotlinx.android.synthetic.main.fragment_wall_all.*
 import java.util.concurrent.Executors
 
 
@@ -21,22 +17,22 @@ import java.util.concurrent.Executors
  */
 
 
-class WallAllFragment : BaseWallFragment(), WallAllContract.WallAllView {
+class WallForUserFragment : BaseWallFragment(), WallUserContract.WallUserView {
 
-    lateinit var presenter: WallAllContract.WallAllPresenter
+    lateinit var presenter: WallUserContract.WallUserPresenter
+
 
     companion object {
         fun getInstance(wallFlowContract: WallFlowContract): BaseWallFragment {
-            val wallAllFragment = WallAllFragment()
+            val wallAllFragment = WallForUserFragment()
             wallAllFragment.wallFlowContract = wallFlowContract
             return wallAllFragment
         }
     }
 
 
-
     override fun initPagerAdapter(): PagedList<ArticleView> {
-        val dataSource = PositionalDataSourceWallAll(presenter)
+        val dataSource = PositionalDataSourceWallUser(presenter)
         return PagedList.Builder(dataSource, getConfigPagerAdapter())
             .setNotifyExecutor(MainThreadExecutor())
             .setFetchExecutor(Executors.newSingleThreadExecutor())
@@ -44,14 +40,14 @@ class WallAllFragment : BaseWallFragment(), WallAllContract.WallAllView {
     }
 
 
+    override fun getTitle(): Int {
+        return R.string.title_user_article_str
+    }
+
 
     override fun initPresenter() {
-        presenter = WallAllPresenter(this)
+        presenter = WallUserPresenter(this)
     }
 
-
-    override fun getTitle(): Int {
-        return R.string.title_wall_str
-    }
 
 }

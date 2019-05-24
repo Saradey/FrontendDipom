@@ -16,6 +16,8 @@ const val START_FRAGMENT_REGISTRATION = 1
 
 const val START_WALL_ALL_FRAGMENT = 0
 
+const val START_WALL_USER_FRAGMENT = 1
+
 
 //CreateArticleFlowFragment
 

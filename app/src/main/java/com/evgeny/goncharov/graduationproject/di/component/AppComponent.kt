@@ -1,10 +1,13 @@
 package com.evgeny.goncharov.graduationproject.di.component
 
 import android.content.Context
+import com.evgeny.goncharov.graduationproject.common.utils.CurrentUser
 import com.evgeny.goncharov.graduationproject.di.module.ModuleActivityProvide
 import com.evgeny.goncharov.graduationproject.di.module.ModuleManagersProvides
 import com.evgeny.goncharov.graduationproject.di.module.ModuleRest
 import com.evgeny.goncharov.graduationproject.mvp.presenter.*
+import com.evgeny.goncharov.graduationproject.rest.RestClient
+import com.evgeny.goncharov.graduationproject.security.DefaultTrustManager
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
 import com.evgeny.goncharov.graduationproject.ui.activity.Router
 import com.evgeny.goncharov.graduationproject.ui.dialog.AskLogoutDialog
@@ -33,8 +36,8 @@ interface AppComponent{
 
     fun inject(createArticleFlowFragment: CreateArticleFlowFragment)
 
-    //dialog
 
+    //dialog
     fun inject(dialog : AskLogoutDialog)
 
 
@@ -48,6 +51,16 @@ interface AppComponent{
     fun inject(presenter : WallAllPresenter)
 
     fun inject(presenter : CreateArticlePresenter)
+
+    fun inject(presenter : WallUserPresenter)
+
+
+    //rest
+    fun inject(manager : RestClient)
+
+
+    //other
+    fun inject(currentUser: CurrentUser)
 
 
     @Component.Builder

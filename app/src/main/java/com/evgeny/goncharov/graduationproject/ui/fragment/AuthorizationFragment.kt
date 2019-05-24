@@ -39,6 +39,11 @@ class AuthorizationFragment : BaseFragment(), AuthorizationContract.Authorizatio
     }
 
 
+    override fun onResume() {
+        super.onResume()
+        entryFlowContract.setTitle(getTitle())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -58,7 +63,6 @@ class AuthorizationFragment : BaseFragment(), AuthorizationContract.Authorizatio
         button_registration.setOnClickListener {
             entryFlowContract.startOnScreen(START_FRAGMENT_REGISTRATION)
         }
-
     }
 
 

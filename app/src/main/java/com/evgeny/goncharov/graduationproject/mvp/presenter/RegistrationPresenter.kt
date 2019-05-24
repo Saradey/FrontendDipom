@@ -6,6 +6,7 @@ import com.evgeny.goncharov.graduationproject.common.managers.NetworkManager
 import com.evgeny.goncharov.graduationproject.mvp.contract.RegistrationContract
 import com.evgeny.goncharov.graduationproject.rest.api.UserApi
 import com.evgeny.goncharov.graduationproject.rest.model.request.RegistrationRequest
+import com.evgeny.goncharov.graduationproject.rest.model.request.post.RequestRegistrationBody
 import com.evgeny.goncharov.graduationproject.rest.model.response.Full
 import com.evgeny.goncharov.graduationproject.rest.model.response.Response
 import com.evgeny.goncharov.graduationproject.ui.activity.MainActivity
@@ -50,7 +51,13 @@ class RegistrationPresenter(val view: RegistrationContract.RegistrationView) :
 
 
     private fun request(log: String, pas: String, email: String): Observable<Full<Response>> {
-        return userApi.registration(RegistrationRequest(log, pas, email).toRequest())
+        return userApi.registration(
+            RequestRegistrationBody(
+                log,
+                pas,
+                email
+            )
+        )
     }
 
 

@@ -51,6 +51,11 @@ class RegistrationFragment : BaseFragment(), RegistrationContract.RegistrationVi
         return R.string.fragment_reg_str
     }
 
+    override fun onResume() {
+        super.onResume()
+        entryFlowContract.setTitle(getTitle())
+    }
+
 
     private fun initUiLogic() {
         reg_button.setOnClickListener {

@@ -1,6 +1,7 @@
 package com.evgeny.goncharov.graduationproject.ui.fragment.flow
 
 import android.os.Bundle
+import android.support.annotation.StringRes
 import com.evgeny.goncharov.graduationproject.R
 import com.evgeny.goncharov.graduationproject.common.managers.fragment.EntryFragmentManager
 import com.evgeny.goncharov.graduationproject.common.managers.fragment.FlowFragmentManager
@@ -34,7 +35,7 @@ class EntryFlowFragment : BaseFlowFragment(), EntryFlowContract {
 
 
     //сетая тайтл экрана
-    override fun setTitle(title: Int) {
+    override fun setTitle(@StringRes title: Int) {
         requireActivity().setTitle(title)
     }
 

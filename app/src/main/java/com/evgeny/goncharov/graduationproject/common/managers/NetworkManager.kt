@@ -12,12 +12,12 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.concurrent.Callable
 
-class NetworkManager (private val context: Context){
+class NetworkManager(private val context: Context) {
 
     private fun isOnline(): Boolean {
         val cm: ConnectivityManager? =
-                context.getSystemService(Context.CONNECTIVITY_SERVICE)
-                        as ConnectivityManager
+            context.getSystemService(Context.CONNECTIVITY_SERVICE)
+                    as ConnectivityManager
         val networkInfo: NetworkInfo? = cm!!.activeNetworkInfo
         var isOn = false
         networkInfo?.let {
@@ -27,35 +27,21 @@ class NetworkManager (private val context: Context){
     }
 
 
-
     private fun isOnlineBackEnd(): Callable<Boolean> {
         return object : Callable<Boolean> {
             override fun call(): Boolean {
-                try {
-                    if (!isOnline()) {
-                        return false
-                    }
-
-                    val url = URL(BASE_URL)
-                    val urlc = url.openConnection() as HttpURLConnection
-                    urlc.connectTimeout = 5000
-                    urlc.connect()
-
-                    return true
-                } catch (e: IOException) {
-                    Log.d(LOG_REST_MANAGER, e.message)
+                if (!isOnline()) {
                     return false
                 }
+                return true
             }
         }
     }
 
 
-
-    fun getNetworkStatus() : Observable<Boolean> {
+    fun getNetworkStatus(): Observable<Boolean> {
         return Observable.fromCallable(isOnlineBackEnd())
     }
-
 
 
 }

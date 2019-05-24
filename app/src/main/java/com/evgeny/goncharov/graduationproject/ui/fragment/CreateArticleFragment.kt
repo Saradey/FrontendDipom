@@ -37,6 +37,7 @@ class CreateArticleFragment : BaseFragment(), CreateArticleContract.CreateArticl
         super.onViewCreated(view, savedInstanceState)
         initUILogic()
         initPresenter()
+        createArticleFlow.setTitle(getTitle())
     }
 
 

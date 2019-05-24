@@ -30,6 +30,9 @@ class WallAllPresenter(val view: WallAllContract.WallAllView) : WallAllContract.
     @Inject
     lateinit var articleApi: ArticleApi
 
+    @Inject
+    lateinit var currentUser: CurrentUser
+
     private var getIdOffset = -1
 
 
@@ -53,7 +56,10 @@ class WallAllPresenter(val view: WallAllContract.WallAllView) : WallAllContract.
 
 
     private fun onLoadLastDataFromInternet(): Observable<ArticleView>? {
-        return articleApi.getLastArticle(LastArticleRequestModel(CurrentUser.login, CurrentUser.token).toRequest())
+        return articleApi.getLastArticle(
+            currentUser.pasNameBase64,
+            LastArticleRequestModel().toRequest()
+        )
             .flatMap {
                 Observable.fromIterable(it.response!!.list)
             }
@@ -85,9 +91,8 @@ class WallAllPresenter(val view: WallAllContract.WallAllView) : WallAllContract.
 
     private fun loadOffset(idOffset: Int): Observable<ArticleView>? {
         return articleApi.getArticleOffset(
+            currentUser.pasNameBase64,
             OffsetArticleRequestModel(
-                CurrentUser.login,
-                CurrentUser.token,
                 getIdOffset.toString()
             ).toRequest()
         ).flatMap {

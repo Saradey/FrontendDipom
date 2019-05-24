@@ -16,7 +16,6 @@ class Article {
     @Expose
     var id : Int = -1
 
-
     @SerializedName("text")
     @Expose
     var text : String = "null"
@@ -24,5 +23,9 @@ class Article {
     @SerializedName("nameArticle")
     @Expose
     var nameArticle : String = "null"
+
+    @SerializedName("id_user")
+    @Expose
+    var idUser : String = "null"
 
 }

@@ -12,7 +12,7 @@ import com.evgeny.goncharov.graduationproject.mvp.contract.WallAllContract
  */
 
 @SuppressLint("CheckResult")
-class PositionalDataSourceArticle(private val presenter: WallAllContract.WallAllPresenter) :
+class PositionalDataSourceWallAll(private val presenter: WallAllContract.WallAllPresenter) :
     PositionalDataSource<ArticleView>() {
 
 

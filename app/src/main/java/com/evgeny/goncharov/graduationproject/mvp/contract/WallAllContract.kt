@@ -5,7 +5,8 @@ import io.reactivex.Single
 
 interface WallAllContract {
 
-    interface WallAllPresenter{
+
+    interface WallAllPresenter {
 
         fun loadLastData(): Single<List<ArticleView>>
 
@@ -14,8 +15,9 @@ interface WallAllContract {
     }
 
 
-    interface WallAllView{
+    interface WallAllView {
 
     }
+
 
 }

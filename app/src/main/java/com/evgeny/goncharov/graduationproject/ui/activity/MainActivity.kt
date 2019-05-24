@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView 
     @Inject
     lateinit var flowFragmentManager: ActivityFragmentManager
 
+    @Inject
+    lateinit var currentUser: CurrentUser
+
     lateinit var presenter: MainActivityContract.MainPresenter
 
 
@@ -91,21 +94,7 @@ class MainActivity : AppCompatActivity(), Router, MainActivityContract.MainView 
 
     override fun exit() {
         startOnScreen(START_FRAGMENT_ENTRY)
-        presenter.logout()
-        CurrentUser.logout()
+        currentUser.logout()
     }
-
-
-    override fun onStop() {
-        super.onStop()
-        presenter.logout()
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        presenter.goToTheAuthentication()
-    }
-
 
 }

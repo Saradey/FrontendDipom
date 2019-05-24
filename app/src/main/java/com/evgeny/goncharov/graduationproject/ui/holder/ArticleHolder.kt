@@ -19,7 +19,7 @@ class ArticleHolder (val view: View) : RecyclerView.ViewHolder(view){
 
     fun onBindView(articleView : ArticleView?){
         articleView?.let {
-            view.name_article.text = "${it.name} ${it.id}"
+            view.name_article.text = "${it.name}"
             view.article_text.text = it.textArticle
         }
     }

@@ -43,5 +43,7 @@
     <string name="filed_str">Ошибка публикации</string>
     <string name="logout_title_str">Разлогинится</string>
     <string name="logout_text_str">Вы точно хотите выйти из аккаунта?</string>
+    <string name="title_user_article_str">Ваши статьи</string>
+    <string name="wall_all_str">Все публикации</string>
 
 </resources>
